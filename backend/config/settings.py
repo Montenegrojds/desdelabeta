@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     #3rd-party apps
     'rest_framework',
+    'corsheaders',
 
     #Local
     'posts',
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware', #corsheaders
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -133,5 +135,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
     'rest_framework.permissions.AllowAny',
+    
+
     ]
 }
+
+CORS_ORIGIN_WHITELIST = (
+'http://localhost:3000',
+'https://localhost:3000',
+'http://localhost:8000',
+'https://localhost:8000',
+)
