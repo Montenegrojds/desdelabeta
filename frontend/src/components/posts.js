@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Button, Card, Row} from 'react-bootstrap'
 
 export class BlogPost extends Component {
     constructor(props) {
@@ -27,22 +28,24 @@ export class BlogPost extends Component {
     
     render(){
         return(
-            <div>
+            <Row xs={1} md={2} className="g-4">
                 {this.state.posts.map(item =>(
-                    <div key={item.id}>
-                        <h1>{item.title}</h1>
-                        <span>{item.body}</span>
-                        <button 
+                
+                    <Card key={item.id} bg="secondary" style={{ width: '18rem' }}>   
+                        <Card.Img variant="top" src="https://desdelabeta.com/wp-content/uploads/2021/10/2-1.png" />
+                        <Card.Title>{item.title}</Card.Title>
+                        <Card.Text>{item.body.slice(0,70)}...</Card.Text>
+                        <Button variant="success" 
                             onClick={
                                 () => console.log(item.id)
                             }    
                         >
                             Post
-                        </button>
-
-                    </div>
+                        </Button>
+                        <Card.Footer>{item.author} {item.created_at}</Card.Footer>
+                    </Card>
                 ))}
-            </div>
+            </Row>
         )
     }
 }

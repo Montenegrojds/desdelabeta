@@ -1,8 +1,9 @@
 import './App.css';
 import { BlogPost } from './components/posts';
+import { Container } from "react-bootstrap"
 function App() {
   return (
-    <div className="App">
+    <Container className="App">
       <header className="App-header">
         
         <p>
@@ -11,7 +12,7 @@ function App() {
         
         <BlogPost />
       </header>
-    </div>
+    </Container>
   );
 }
 
