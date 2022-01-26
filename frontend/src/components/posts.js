@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Button, Card, Row} from 'react-bootstrap'
-
+import { FullPost } from './fullpost';
+import { Router } from 'react-router-dom';
 export class BlogPost extends Component {
     constructor(props) {
         super(props);
     
         this.state = {
-            posts: []
+            posts: [],
+            info: {},
         };
+        
     }
 
     componentDidMount() {
@@ -25,6 +28,11 @@ export class BlogPost extends Component {
         })
 
     }
+
+    getFullPost(id){
+        <Router.Link to="posts/:id">Landing Page</Router.Link>
+        
+    }
     
     render(){
         return(
@@ -36,12 +44,12 @@ export class BlogPost extends Component {
                         <Card.Title>{item.title}</Card.Title>
                         <Card.Text>{item.body.slice(0,70)}...</Card.Text>
                         <Button variant="success" 
-                            onClick={
-                                () => console.log(item.id)
-                            }    
+                            href={'post/' + item.id}  
                         >
                             Post
                         </Button>
+
+                        
                         <Card.Footer>{item.author} {item.created_at}</Card.Footer>
                     </Card>
                 ))}
